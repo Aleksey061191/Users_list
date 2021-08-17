@@ -1,3 +1,4 @@
+import { responsiveFontSizes } from "@material-ui/core";
 import React, { useEffect, useState, createContext, useContext } from "react";
 import { UserApi } from "../services/UserApi";
 
@@ -11,9 +12,9 @@ export const UserContextProvider = ({ children }) => {
 
     useEffect(() => {
         {name==''?
-            UserApi.getAll().then(resp => setUsers(resp?.data?.results ?? []))
+            UserApi.getAll().then(resp =>setUsers(resp.data ))
             :
-            UserApi.getSearch(name).then(resp => setUsers(resp?.data?.results ?? []))
+            UserApi.getSearch(name).then(resp => setUsers(resp.data))
         }
     }, [name]);
     const value = {
